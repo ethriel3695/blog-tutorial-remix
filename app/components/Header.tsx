@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 
 import { Button } from "./Button";
@@ -16,32 +15,37 @@ interface HeaderProps {
 
 const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => {
   return (
-    <nav className="flex items-center justify-between px-5 py-0 text-gray-800 sm:my-0 lg:justify-start xl:my-0">
-      <div className="container mx-auto px-4">
-        <div className="flex h-16 justify-around">
-          <div className="flex">
-            <NavLink
-              to="/"
-              end
-              className={(props) => {
-                return `${
-                  props.isActive ? "text-indigo-500 " : "text-gray-600 "
-                }inline-flex cursor-pointer items-center rounded bg-transparent px-2 py-1 text-center text-xl font-bold leading-5 lg:mr-6`;
-              }}
+    <div className="navbar bg-base-100">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <label tabIndex={0} className="btn-ghost btn-circle btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              My Blog
-            </NavLink>
-          </div>
-          <div className="items-start text-gray-800 lg:flex">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h7"
+              />
+            </svg>
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu rounded-box menu-sm mt-3 w-52 bg-base-100 p-2 shadow"
+          >
             <NavLink
               to="/"
               end
               className={(props) => {
-                return `${
-                  props.isActive
+                return `${props.isActive
                     ? "bg-gray-900 text-white "
                     : "text-gray-600 hover:text-gray-300 "
-                }rounded-md px-3 py-2 text-sm font-medium`;
+                  }btn-ghost btn-circle btn`;
               }}
             >
               Home
@@ -49,11 +53,10 @@ const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => {
             <NavLink
               to="/about"
               className={(props) => {
-                return `${
-                  props.isActive
+                return `${props.isActive
                     ? "bg-gray-900 text-white "
                     : "text-gray-600 hover:text-gray-300 "
-                }rounded-md px-3 py-2 text-sm font-medium`;
+                  }btn-ghost btn-square btn`;
               }}
             >
               About
@@ -61,11 +64,10 @@ const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => {
             <NavLink
               to="/posts"
               className={(props) => {
-                return `${
-                  props.isActive
+                return `${props.isActive
                     ? "bg-gray-900 text-white "
                     : "text-gray-300 hover:text-white "
-                }rounded-md px-3 py-2 text-sm font-medium`;
+                  }btn-ghost btn-square btn`;
               }}
             >
               Posts
@@ -73,39 +75,52 @@ const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => {
             <NavLink
               to="/contact"
               className={(props) => {
-                return `${
-                  props.isActive
+                return `${props.isActive
                     ? "bg-gray-900 text-white "
                     : "text-gray-300 hover:text-white "
-                }rounded-md px-3 py-2 text-sm font-medium`;
+                  }btn-ghost btn-square btn`;
               }}
             >
               Contact
             </NavLink>
-            <div>
-              {user ? (
-                <>
-                  <span className="welcome">
-                    Welcome, <b>{user.name}</b>!
-                  </span>
-                  <Button size="small" onClick={onLogout} label="Log out" />
-                </>
-              ) : (
-                <>
-                  <Button size="small" onClick={onLogin} label="Log in" />
-                  <Button
-                    primary
-                    size="small"
-                    onClick={onCreateAccount}
-                    label="Sign up"
-                  />
-                </>
-              )}
-            </div>
-          </div>
+          </ul>
         </div>
       </div>
-    </nav>
+      <div className="navbar-center">
+        <NavLink
+          to="/"
+          end
+          className={(props) => {
+            return `${props.isActive ? "text-indigo-500 " : "text-gray-600 "
+              }btn-ghost btn text-xl normal-case`;
+          }}
+        >
+          My Blog
+        </NavLink>
+      </div>
+      <div className="navbar-end">
+        <div>
+          {user ? (
+            <>
+              <span className="welcome">
+                Welcome, <b>{user.name}</b>!
+              </span>
+              <Button size="small" onClick={onLogout} label="Log out" />
+            </>
+          ) : (
+            <>
+              <Button size="small" onClick={onLogin} label="Log in" />
+              <Button
+                primary
+                size="small"
+                onClick={onCreateAccount}
+                label="Sign up"
+              />
+            </>
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 
