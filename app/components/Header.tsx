@@ -1,126 +1,72 @@
 import { NavLink } from "react-router-dom";
-
-import { Button } from "./Button";
+import { NavDropdown } from "./NavDropdown";
 
 type User = {
   name: string;
 };
 
-interface HeaderProps {
+export type HeaderProps = {
   user?: User;
-  onLogin: () => void;
-  onLogout: () => void;
-  onCreateAccount: () => void;
-}
+  onLogin?: () => void;
+  onLogout?: () => void;
+  onCreateAccount?: () => void;
+};
 
 const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => {
   return (
-    <div className="navbar bg-base-100">
+    <nav
+      className="navbar bg-base-100"
+      style={{ borderBottom: "1px solid hsla(203, 50%, 30%, 0.15)" }}
+    >
       <div className="navbar-start">
-        <div className="dropdown">
-          <label tabIndex={0} className="btn-ghost btn-circle btn">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h7"
-              />
-            </svg>
+        <NavDropdown />
+      </div>
+      <div className="navbar-center">
+        <a className="btn-ghost btn text-xl normal-case">Enhanced</a>
+      </div>
+      <div className="navbar-end">
+        <button className="btn-ghost btn-circle btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </button>
+        <div className="dropdown-end dropdown">
+          <label tabIndex={0} className="btn-ghost btn-circle avatar btn">
+            <div className="w-10 rounded-full">
+              <img src="/avatarPlaceholder.jpeg" />
+            </div>
           </label>
           <ul
             tabIndex={0}
             className="dropdown-content menu rounded-box menu-sm mt-3 w-52 bg-base-100 p-2 shadow"
           >
-            <NavLink
-              to="/"
-              end
-              className={(props) => {
-                return `${props.isActive
-                    ? "bg-gray-900 text-white "
-                    : "text-gray-600 hover:text-gray-300 "
-                  }btn-ghost btn-circle btn`;
-              }}
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/about"
-              className={(props) => {
-                return `${props.isActive
-                    ? "bg-gray-900 text-white "
-                    : "text-gray-600 hover:text-gray-300 "
-                  }btn-ghost btn-square btn`;
-              }}
-            >
-              About
-            </NavLink>
-            <NavLink
-              to="/posts"
-              className={(props) => {
-                return `${props.isActive
-                    ? "bg-gray-900 text-white "
-                    : "text-gray-300 hover:text-white "
-                  }btn-ghost btn-square btn`;
-              }}
-            >
-              Posts
-            </NavLink>
-            <NavLink
-              to="/contact"
-              className={(props) => {
-                return `${props.isActive
-                    ? "bg-gray-900 text-white "
-                    : "text-gray-300 hover:text-white "
-                  }btn-ghost btn-square btn`;
-              }}
-            >
-              Contact
-            </NavLink>
+            <li>
+              <a className="justify-between">
+                Profile
+                <span className="badge">New</span>
+              </a>
+            </li>
+            <li>
+              <a>Settings</a>
+            </li>
+            <li>
+              <a>Logout</a>
+            </li>
           </ul>
         </div>
       </div>
-      <div className="navbar-center">
-        <NavLink
-          to="/"
-          end
-          className={(props) => {
-            return `${props.isActive ? "text-indigo-500 " : "text-gray-600 "
-              }btn-ghost btn text-xl normal-case`;
-          }}
-        >
-          My Blog
-        </NavLink>
-      </div>
-      <div className="navbar-end">
-        <div>
-          {user ? (
-            <>
-              <span className="welcome">
-                Welcome, <b>{user.name}</b>!
-              </span>
-              <Button size="small" onClick={onLogout} label="Log out" />
-            </>
-          ) : (
-            <>
-              <Button size="small" onClick={onLogin} label="Log in" />
-              <Button
-                primary
-                size="small"
-                onClick={onCreateAccount}
-                label="Sign up"
-              />
-            </>
-          )}
-        </div>
-      </div>
-    </div>
+    </nav>
   );
 };
 

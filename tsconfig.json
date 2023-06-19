@@ -1,10 +1,11 @@
 {
-  "exclude": ["./cypress", "./cypress.config.ts"],
+  "exclude": ["./cypress", "./cypress.config.ts", "./tailwind.config.ts"],
   "include": [
     "remix.env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "app/components/Header.tsx"
+    "app/components/Header.tsx",
+    "tailwind.config.js"
   ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2019"],

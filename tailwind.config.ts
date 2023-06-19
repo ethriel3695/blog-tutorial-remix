@@ -5,15 +5,11 @@ export default {
   theme: {
     extend: {},
   },
+  plugins: [require("daisyui")],
   daisyui: {
-    styled: true,
-    themes: true,
-    base: true,
+    themes: ["light", "dark"],
     utils: true,
     logs: true,
-    rtl: false,
-    prefix: "",
-    darkTheme: "dark",
   },
-  plugins: [require("daisyui")],
+  darkMode: ["class", '[data-theme="dark"]'],
 } satisfies Config;

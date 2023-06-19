@@ -1,12 +1,12 @@
 import type { Preview } from "@storybook/react";
-import { withThemeByClassName } from "@storybook/addon-styling";
+import { withThemeByDataAttribute } from "@storybook/addon-styling";
 import { withRouter } from "storybook-addon-react-router-v6";
 
 import "../app/tailwind.css";
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
+    actions: { argTypesRegex: "^on.*" },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -19,12 +19,13 @@ const preview: Preview = {
 export default preview;
 
 export const decorators = [
-  withThemeByClassName({
+  withThemeByDataAttribute({
     themes: {
       light: "light",
       dark: "dark",
     },
     defaultTheme: "light",
+    attributeName: "data-theme",
   }),
   withRouter,
 ];
