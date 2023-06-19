@@ -12,6 +12,10 @@ export default defineConfig(({ mode }) => {
     build: {
       sourcemap: true,
     },
+    test: {
+      include: ["**/*.test.ts"],
+      globals: true,
+    },
     plugins: [react(), tsconfigPaths()],
   };
 });
