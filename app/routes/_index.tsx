@@ -6,7 +6,7 @@ import { useOptionalUser } from "~/utils";
 export const meta: V2_MetaFunction = () => [{ title: "Remix Notes" }];
 
 export default function Index() {
-  const user = useOptionalUser();
+  // const user = useOptionalUser();
   return (
     <>
       <main className="relative min-h-screen bg-white sm:flex sm:items-center sm:justify-center">
@@ -31,7 +31,7 @@ export default function Index() {
                   Check the README.md file for instructions on how to get this
                   project deployed.
                 </p>
-                <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
+                {/* <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
                   {user ? (
                     <Link
                       to="/notes"
@@ -55,7 +55,7 @@ export default function Index() {
                       </Link>
                     </div>
                   )}
-                </div>
+                </div> */}
                 <a href="https://remix.run">
                   <img
                     src="https://user-images.githubusercontent.com/1500684/158298926-e45dafff-3544-4b69-96d6-d3bcc33fc76a.svg"
