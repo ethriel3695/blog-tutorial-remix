@@ -29,7 +29,7 @@ export const Vertical: Story = {
       defaultViewport: "iphonex",
     },
     chromatic: {
-      viewport: [375],
+      viewports: [375],
     },
   },
 };
