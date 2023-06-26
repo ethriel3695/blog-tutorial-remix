@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Index from "./_index";
+import { HomePage } from "./HomePage";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: "routes/index",
-  component: Index,
+  title: "Templates/HomePage",
+  component: HomePage,
   // tags: ["autodocs"],
-} satisfies Meta<typeof Index>;
+} satisfies Meta<typeof HomePage>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

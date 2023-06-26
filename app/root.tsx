@@ -8,6 +8,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
 
 import Header from "~/components/Header";
@@ -20,7 +21,12 @@ export const links: LinksFunction = () => [
 ];
 
 export const loader = async ({ request }: LoaderArgs) => {
-  return json({ user: await getUser(request) });
+  return json({
+    user: await getUser(request),
+    ENV: {
+      IS_STORYBOOK: process.env.IS_STORYBOOK,
+    },
+  });
 };
 
 function Document({
@@ -47,6 +53,7 @@ function Document({
 }
 
 export default function App() {
+  const data = useLoaderData<typeof loader>();
   return (
     <html lang="en" className="h-full">
       <head>
@@ -59,6 +66,11 @@ export default function App() {
         <Header />
         <Outlet />
         <ScrollRestoration />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(data.ENV)}`,
+          }}
+        />
         <Scripts />
         <LiveReload />
       </body>

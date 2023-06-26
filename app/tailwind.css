@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-html[data-theme="dark"] {
+/* html[data-theme="dark"] {
   @apply bg-slate-800 text-white;
 }
 
 html[data-theme="light"] {
   @apply bg-white text-black;
-}
+} */
 
 body {
   margin: 0;

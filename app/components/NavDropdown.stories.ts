@@ -6,7 +6,7 @@ import { NavDropdown } from "./NavDropdown";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: "NavDropdown",
+  title: "Molecules/NavDropdown",
   component: NavDropdown,
 } satisfies Meta<typeof NavDropdown>;
 
