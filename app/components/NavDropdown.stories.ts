@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
 import { withRouter } from "storybook-addon-react-router-v6";
+import { withThemeByDataAttribute } from "@storybook/addon-styling";
 
 import { NavDropdown } from "./NavDropdown";
 
@@ -9,7 +10,18 @@ import { NavDropdown } from "./NavDropdown";
 const meta = {
   title: "Molecules/NavDropdown",
   component: NavDropdown,
-  decorators: [withRouter],
+  decorators: [
+    withRouter,
+    withThemeByDataAttribute({
+      themes: {
+        light: "light",
+        dark: "dark",
+        cupcake: "cupcake",
+      },
+      defaultTheme: "cupcake",
+      attributeName: "data-theme",
+    }),
+  ],
 } satisfies Meta<typeof NavDropdown>;
 
 export default meta;
@@ -27,9 +39,8 @@ export const Basic: Story = {
     const navItem = await canvas.findByText("Home");
     expect(navItem).not.toBeNull();
   },
+  parameters: { pseudo: { focus: true } },
 };
-
-// Basic.parameters = { pseudo: { hover: true } };
 
 export const CloseMenu: Story = {
   play: async (context) => {

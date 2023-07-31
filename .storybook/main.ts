@@ -21,7 +21,7 @@ const config: StorybookConfig = {
         },
       },
     },
-    // "storybook-addon-pseudo-states",
+    "storybook-addon-pseudo-states",
   ],
   framework: {
     name: "@storybook/react-vite",

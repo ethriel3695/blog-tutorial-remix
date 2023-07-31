@@ -1,7 +1,6 @@
 import type { Loader, Preview } from "@storybook/react";
 // import type { LinkDescriptor } from "@remix-run/node";
 import { withThemeByDataAttribute } from "@storybook/addon-styling";
-import { withRouter } from "storybook-addon-react-router-v6";
 // import { initialize, mswLoader } from "msw-storybook-addon";
 
 // import { setupWorker, rest } from "msw";
@@ -92,6 +91,7 @@ export const decorators = [
     themes: {
       light: "light",
       dark: "dark",
+      cupcake: "cupcake",
     },
     defaultTheme: "light",
     attributeName: "data-theme",
