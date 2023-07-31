@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within } from "@storybook/testing-library";
+import { userEvent, within, waitFor } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
+import { withRouter } from "storybook-addon-react-router-v6";
 
 import { Pagination } from "./Pagination";
 
@@ -9,6 +10,7 @@ const meta = {
   title: "Atoms/Pagination",
   component: Pagination,
   // tags: ["autodocs"],
+  decorators: [withRouter],
 } satisfies Meta<typeof Pagination>;
 
 export default meta;
@@ -32,6 +34,6 @@ export const BackToBeginningPrevious: Story = {
     const canvas = within(canvasElement);
     const previousButton = await canvas.findByText("Previous page");
     expect(previousButton).not.toBeNull();
-    userEvent.click(previousButton);
+    await waitFor(() => userEvent.click(previousButton));
   },
 };

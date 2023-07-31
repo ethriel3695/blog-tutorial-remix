@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { withRouter } from "storybook-addon-react-router-v6";
+
 import Header from "./Header";
 
 const meta = {
   title: "Organisms/NavBar",
   component: Header,
+  decorators: [withRouter],
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   // tags: ["autodocs"],
   parameters: {

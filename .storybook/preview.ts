@@ -76,6 +76,9 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    // backgrounds: {
+    //   default: "light",
+    // },
   },
   // loaders: loaders,
   // Provide the MSW addon loader globally
@@ -93,5 +96,4 @@ export const decorators = [
     defaultTheme: "light",
     attributeName: "data-theme",
   }),
-  withRouter,
 ];

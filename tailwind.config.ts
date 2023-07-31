@@ -11,5 +11,5 @@ export default {
     utils: true,
     logs: true,
   },
-  darkMode: ["class", '[data-theme="dark"]'],
+  darkMode: ["class", '[data-theme="light"]'],
 } satisfies Config;

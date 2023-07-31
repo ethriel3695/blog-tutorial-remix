@@ -1,4 +1,7 @@
 import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
+import { themeChange } from "theme-change";
+
 import { NavDropdown } from "./NavDropdown";
 
 type User = {
@@ -13,6 +16,10 @@ export type HeaderProps = {
 };
 
 const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => {
+  useEffect(() => {
+    themeChange(false);
+    // 👆 false parameter is required for react project
+  }, []);
   return (
     <nav
       className="navbar bg-base-100"
@@ -25,6 +32,14 @@ const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => {
         <a className="btn-ghost btn text-xl normal-case">Enhanced</a>
       </div>
       <div className="navbar-end">
+        <button
+          data-key="theme"
+          data-toggle-theme="dark"
+          data-theme="light, dark"
+          data-act-class="toggle-theme"
+        >
+          Toggle
+        </button>
         <button className="btn-ghost btn-circle btn">
           <svg
             xmlns="http://www.w3.org/2000/svg"
