@@ -21,10 +21,10 @@ export const Default: Story = {
     // const videoPlayer =
     //   videoContainer.querySelector("video.vjs-tech") || videoContainer;
     // expect(videoPlayer).not.toBeNull();
-    setTimeout(async () => {
-      await waitFor(() => {
-        userEvent.click(videoContainer);
-      });
-    }, 5000);
+    // setTimeout(async () => {
+    //   await waitFor(() => {
+    //     userEvent.click(videoContainer);
+    //   });
+    // }, 5000);
   },
 };

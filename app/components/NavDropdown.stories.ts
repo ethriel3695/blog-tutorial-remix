@@ -39,7 +39,7 @@ export const Basic: Story = {
     const navItem = await canvas.findByText("Home");
     expect(navItem).not.toBeNull();
   },
-  parameters: { pseudo: { focus: true } },
+  parameters: { pseudo: { hover: true } },
 };
 
 export const CloseMenu: Story = {
