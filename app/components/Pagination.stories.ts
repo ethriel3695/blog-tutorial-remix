@@ -1,7 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within, waitFor } from "@storybook/testing-library";
-import { expect } from "@storybook/jest";
-import { withRouter } from "storybook-addon-react-router-v6";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect, userEvent, within, waitFor } from "storybook/test";
+import { withRouter } from "storybook-addon-remix-react-router";
 
 import { Pagination } from "./Pagination";
 
@@ -10,7 +9,7 @@ const meta = {
   title: "Atoms/Pagination",
   component: Pagination,
   // tags: ["autodocs"],
-  decorators: [withRouter],
+  decorators: [withRouter()],
 } satisfies Meta<typeof Pagination>;
 
 export default meta;

@@ -1,7 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within } from "@storybook/testing-library";
-import { expect } from "@storybook/jest";
-import { withRouter } from "storybook-addon-react-router-v6";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect, userEvent, within } from "storybook/test";
+import { withRouter } from "storybook-addon-remix-react-router";
 import { withThemeByDataAttribute } from "@storybook/addon-styling";
 
 import { NavDropdown } from "./NavDropdown";

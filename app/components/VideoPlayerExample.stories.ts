@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within, waitFor } from "@storybook/testing-library";
-import { expect } from "@storybook/jest";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect, userEvent, within, waitFor } from "storybook/test";
 import { VideoPlayerExample } from "./VideoPlayerExample";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction

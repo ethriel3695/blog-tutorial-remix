@@ -1,6 +1,6 @@
-import type { LoaderArgs } from "@remix-run/node";
-import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import type { LoaderArgs } from "react-router";
+import { json } from "react-router";
+import { useLoaderData } from "react-router";
 import { marked } from "marked";
 import invariant from "tiny-invariant";
 

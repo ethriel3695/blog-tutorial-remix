@@ -1,5 +1,5 @@
-import type { ActionArgs } from "@remix-run/node";
-import { redirect } from "@remix-run/node";
+import type { ActionArgs } from "react-router";
+import { redirect } from "react-router";
 
 import { logout } from "~/session.server";
 

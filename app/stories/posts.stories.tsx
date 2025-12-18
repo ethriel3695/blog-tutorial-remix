@@ -1,8 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import { Outlet, useLoaderData, useMatches } from "@remix-run/react";
-import { unstable_createRemixStub as createRemixStub } from "@remix-run/testing";
-import { json } from "@remix-run/node";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { createMemoryRouter, RouterProvider } from "react-router";
 
 import Posts from "../routes/posts._index";
 
@@ -19,17 +17,17 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   decorators: [
     (Story) => {
-      let RemixStub = createRemixStub([
+      const router = createMemoryRouter([
         {
           path: "/",
           element: <Story />,
           loader: () => {
-            return json({ posts: [] });
+            return { posts: [] };
           },
         },
       ]);
 
-      return <RemixStub />;
+      return <RouterProvider router={router} />;
     },
   ],
 };

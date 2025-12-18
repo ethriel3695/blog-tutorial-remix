@@ -1,15 +1,7 @@
 // import { cssBundleHref } from "@remix-run/css-bundle";
-import type { LinksFunction, LoaderArgs } from "@remix-run/node";
-import { json } from "@remix-run/node";
-import {
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-  useLoaderData,
-} from "@remix-run/react";
+import type { LinksFunction, LoaderArgs } from "react-router";
+import { json } from "react-router";
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from "react-router";
 
 import Header from "~/components/Header";
 import { getUser } from "~/session.server";

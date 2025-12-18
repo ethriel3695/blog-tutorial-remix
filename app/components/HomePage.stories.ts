@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { withRouter } from "storybook-addon-react-router-v6";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { withRouter } from "storybook-addon-remix-react-router";
 
 import { HomePage } from "./HomePage";
 
@@ -7,7 +7,7 @@ import { HomePage } from "./HomePage";
 const meta = {
   title: "Templates/HomePage",
   component: HomePage,
-  decorators: [withRouter],
+  decorators: [withRouter()],
   // tags: ["autodocs"],
 } satisfies Meta<typeof HomePage>;
 

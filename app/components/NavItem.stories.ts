@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { NavItem } from "./NavItem";
-import { withRouter } from "storybook-addon-react-router-v6";
+import { withRouter } from "storybook-addon-remix-react-router";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
   title: "Atoms/NavItem",
   component: NavItem,
-  decorators: [withRouter],
+  decorators: [withRouter()],
   // tags: ["autodocs"],
 } satisfies Meta<typeof NavItem>;
 

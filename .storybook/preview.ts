@@ -1,99 +1,101 @@
-import type { Loader, Preview } from "@storybook/react";
-// import type { LinkDescriptor } from "@remix-run/node";
-import { withThemeByDataAttribute } from "@storybook/addon-styling";
-// import { initialize, mswLoader } from "msw-storybook-addon";
+// import { withAppProviders } from "@/storybook-decorators/storybook-app-providers";
+// import { WithRTLStorybookDecorator } from "@/storybook-decorators/storybook-rtl";
+// import { initFocusMode } from "@remix/app/utils/focus-mode";
+import { withThemeByClassName } from "@storybook/addon-themes";
+import type { Preview } from "@storybook/react-vite";
+import { initialize, mswLoader } from "msw-storybook-addon";
+import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from "storybook/viewport";
+// import "../styles/root.css";
+// import { reactIntl } from "./reactIntl";
 
-// import { setupWorker, rest } from "msw";
-// import { links } from "../app/root";
-import "../app/tailwind.css";
+// initFocusMode();
+initialize();
 
-// const loaders: Loader[] = [() => linksLoader(links())];
+// export const parameters = {
+//   reactIntl,
+// };
 
-// async function linksLoader(links: LinkDescriptor[]) {
-//   const loadedLinks: LinkDescriptor[] = [];
+export const loaders = [mswLoader];
 
-//   const head = document.head;
-//   links.forEach((link) => {
-//     const element = document.createElement("link");
-//     // @ts-ignore
-//     for (const [key, value] of Object.entries(link)) element[key] = value;
-//     element.onload = () => loadedLinks.push(link);
-//     head.appendChild(element);
-//   });
-//   await waitFor(() => loadedLinks.length === links.length);
-//   return {};
-// }
+export const decorators = [
+  // withAppProviders,
+  // WithRTLStorybookDecorator,
+  withThemeByClassName({
+    themes: {
+      light: "light",
+      dark: "dark",
+    },
+    defaultTheme: "light",
+  }),
+];
 
-// async function waitFor(condition: () => boolean, times = 100): Promise<null> {
-//   if (!condition() && times > 0) {
-//     await new Promise(requestAnimationFrame);
-//     return await waitFor(condition, --times);
-//   } else {
-//     return Promise.resolve(null);
-//   }
-// }
+export const globalTypes: Preview["globalTypes"] = {
+  theme: {
+    name: "Theme",
+    description: "Global theme for components",
+    toolbar: {
+      icon: "sun",
+      // Array of plain string values or MenuItem shape
+      items: [
+        { value: undefined, title: "System", left: "🌞" },
+        { value: "light", title: "Light", left: "🌞" },
+        { value: "dark", title: "Dark", left: "🌛" },
+      ],
+      // Change title based on selected value
+      dynamicTitle: true,
+    },
+  },
+  rtl: {
+    name: "RTL",
+    description: "Global RTL for components",
+    toolbar: {
+      icon: "globe",
+      items: [
+        { value: undefined, title: "LTR" },
+        { value: true, title: "RTL" },
+      ],
+      dynamicTitle: true,
+    },
+  },
+};
 
-// const worker = setupWorker(
-//   rest.get("/app/routes/posts._index.tsx", (req, res, ctx) => {
-//     console.log("Posts Index");
-//     console.log(res);
-//     return res(
-//       // Respond with a 200 status code
-//       ctx.json({
-//         slug: "/firstPost",
-//         title: "First Post",
-//         markdown: "##Title",
-//       })
-//     );
-//   })
-// );
-
-// worker.start();
-// worker.printHandlers();
-
-// Initialize MSW
-// initialize({
-//   onUnhandledRequest: (req) => {
-//     console.log(req);
-//     if (req.url.pathname.startsWith("/app/routes")) {
-//       console.log(`Unhandled ${req.method} request to ${req.url.href}.
-
-//         This exception has been only logged in the console, however, it's strongly recommended to resolve this error as you don't want unmocked data in Storybook stories.
-
-//         If you wish to mock an error response, please refer to this guide: https://mswjs.io/docs/recipes/mocking-error-responses
-//       `);
-//     }
-//   },
-// });
+export const SUPPORTED_VIEWPORTS: Array<keyof typeof INITIAL_VIEWPORTS> = [
+  "ipad",
+  "ipad12p",
+  "iphone12",
+  "iphone14promax",
+  "iphone5",
+  "iphonexr",
+  "iphonexsmax",
+  "pixel",
+  "pixelxl",
+] as const;
+const SUPPORTED_VIEWPORTS_MAP = Object.fromEntries(
+  SUPPORTED_VIEWPORTS.map((key) => [key, INITIAL_VIEWPORTS[key]])
+);
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: "^on.*" },
+    viewport: {
+      options: {
+        ...SUPPORTED_VIEWPORTS_MAP,
+        ...MINIMAL_VIEWPORTS,
+      },
+    },
+    // reactIntl,
+    a11y: { test: "error" },
+    initialGlobals: {
+      viewport: { value: "tablet", isRotated: false },
+      theme: "light",
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/,
       },
     },
-    // backgrounds: {
-    //   default: "light",
-    // },
   },
-  // loaders: loaders,
-  // Provide the MSW addon loader globally
-  // loaders: [mswLoader],
+  tags: [],
 };
 
 export default preview;
-
-export const decorators = [
-  withThemeByDataAttribute({
-    themes: {
-      light: "light",
-      dark: "dark",
-      cupcake: "cupcake",
-    },
-    defaultTheme: "light",
-    attributeName: "data-theme",
-  }),
-];

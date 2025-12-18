@@ -1,5 +1,5 @@
 import React from "react";
-import { RemixBrowser } from "@remix-run/react";
+import { HydratedRouter } from "react-router/dom";
 
 export function RemixStub({ children }) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -23,5 +23,5 @@ export function RemixStub({ children }) {
     future: {},
   };
 
-  return <RemixBrowser />;
+  return <HydratedRouter />;
 }

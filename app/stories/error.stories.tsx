@@ -1,7 +1,6 @@
-import { type StoryObj, type Meta } from "@storybook/react";
+import { type StoryObj, type Meta } from "@storybook/react-vite";
 import { GeneralErrorBoundary } from "../components/error-boundary";
-import { unstable_createRemixStub as createRemixStub } from "@remix-run/testing";
-import { Form } from "@remix-run/react";
+import { createMemoryRouter, RouterProvider, Form } from "react-router";
 
 export default {
   title: "ErrorBoundary",
@@ -11,7 +10,7 @@ export default {
 export const LoaderError = {
   decorators: [
     (Story) => {
-      let RemixStub = createRemixStub([
+      const router = createMemoryRouter([
         {
           path: "/",
           element: <Story />,
@@ -25,7 +24,7 @@ export const LoaderError = {
         },
       ]);
 
-      return <RemixStub />;
+      return <RouterProvider router={router} />;
     },
   ],
 } satisfies StoryObj<typeof GeneralErrorBoundary>;
@@ -33,11 +32,7 @@ export const LoaderError = {
 export const ActionError = {
   decorators: [
     (Story) => {
-      // This is how you make remix-specific routes, loaders and actions etc.
-      // This works for all remix utilities e.g. useLoaderData and even fetchers!
-      // To see full usage check out the @remix-run/testing tests - the docs are not updated yet for this package.
-      // https://github.com/remix-run/remix/blob/main/packages/remix-testing/__tests__/stub-test.tsx
-      let RemixStub = createRemixStub([
+      const router = createMemoryRouter([
         {
           path: "/",
           element: <Story />,
@@ -50,7 +45,7 @@ export const ActionError = {
         },
       ]);
 
-      return <RemixStub />;
+      return <RouterProvider router={router} />;
     },
   ],
   render: () => (
