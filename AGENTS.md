@@ -37,6 +37,11 @@
 
 ## Testing Guidelines
 
+- Before doing any UI, frontend or React development, ALWAYS call the storybook MCP server to get further instructions.
+
+- After the UI process is complete, run `npx vitest run --project storybook` to validate the results, if vite is installed.
+- Also, address the a11y violations and other issues reported by the storybook MCP server and address the accessibility violations if there are any then run npx vitest run again and iterate until all a11y violations are resolved.
+
 - Unit/component tests use Vitest and Testing Library.
 - Browser tests use Vitest Browser (`vitest.browser.config.ts`).
 - Place shared setup in `app/test/setup-test-env.ts`.

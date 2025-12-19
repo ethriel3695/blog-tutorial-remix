@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, within } from "storybook/test";
 import { withRouter } from "storybook-addon-remix-react-router";
-import { withThemeByDataAttribute } from "@storybook/addon-styling";
+import { withThemeByDataAttribute } from "@storybook/addon-themes";
 
 import { NavDropdown } from "./NavDropdown";
 
